@@ -16,14 +16,15 @@ public class JooqUtil {
     }
 
     public static OrderField[] createOrderBy(Table table, List<QuerySortOrder> sortOrders) {
-        return sortOrders.stream().map(sortOrder -> {
+        List<OrderField<?>> list = sortOrders.stream().map(sortOrder -> {
             Field<?> field = table.field(getFieldName(sortOrder.getSorted()));
             if (sortOrder.getDirection() == SortDirection.ASCENDING) {
                 return field.asc();
             } else {
                 return field.desc();
             }
-        }).collect(Collectors.toList()).toArray(OrderField[]::new);
+        }).collect(Collectors.toList());
+        return list.toArray(new OrderField[list.size()]);
     }
 
     public static String getPropertyName(Field<?> field) {
