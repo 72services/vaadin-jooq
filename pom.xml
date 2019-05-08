@@ -10,7 +10,7 @@
         <version>9</version>
     </parent>
 
-    <groupId>io.seventytwo</groupId>
+    <groupId>io.seventytwo.vaadin-jooq</groupId>
     <artifactId>vaadin-jooq</artifactId>
     <version>0.0.2-SNAPSHOT</version>
 
