@@ -14,8 +14,8 @@
     <artifactId>vaadin-jooq</artifactId>
     <version>0.1.1-SNAPSHOT</version>
 
-    <name>Vaadin jOOQ</name>
-    <description>Vaadin jOOQ</description>
+    <name>Vaadin jOOQ Integration</name>
+    <description>Integrates Vaadin with jOOQ</description>
     <url>https://github.com/simasch/vaadin-jooq</url>
     <licenses>
         <license>
