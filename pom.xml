@@ -12,7 +12,7 @@
 
     <groupId>io.seventytwo.vaadin-jooq</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <name>Vaadin jOOQ</name>
     <description>Vaadin jOOQ</description>
