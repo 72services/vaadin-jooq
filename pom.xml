@@ -10,9 +10,9 @@
         <version>9</version>
     </parent>
 
-    <groupId>io.seventytwo</groupId>
+    <groupId>io.seventytwo.vaadin-jooq</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 
     <name>Vaadin jOOQ</name>
     <description>Vaadin jOOQ</description>
@@ -42,11 +42,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.0.1-jre</version>
-        </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>

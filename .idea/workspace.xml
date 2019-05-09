@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de8ab68d-8195-4ebd-bc60-69d116dff9e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/seventytwo/vaadinjooq/JooqUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/seventytwo/vaadinjooq/JooqUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state relative-caret-position="437">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -32,11 +33,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/seventytwo/vaadinjooq/JooqUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+            <state relative-caret-position="211">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/JooqUtilTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -64,8 +74,8 @@
         <option value="$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/TestTableField.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/employee/model/tables/records/EmployeeRecord.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/JooqUtilTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/io/seventytwo/vaadinjooq/JooqUtil.java" />
       </list>
     </option>
@@ -112,8 +122,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,6 +189,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,8 +295,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JooqUtilTest.createOrderBy" />
         <item itemvalue="JUnit.JooqUtilTest" />
+        <item itemvalue="JUnit.JooqUtilTest.createOrderBy" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +311,8 @@
       <option name="presentableId" value="Default" />
       <updated>1557338758491</updated>
       <workItem from="1557338762870" duration="823000" />
-      <workItem from="1557339805948" duration="2455000" />
+      <workItem from="1557339805948" duration="3503000" />
+      <workItem from="1557383027175" duration="837000" />
     </task>
     <task id="LOCAL-00001" summary="Intial commit">
       <created>1557341119434</created>
@@ -331,16 +342,17 @@
       <option name="project" value="LOCAL" />
       <updated>1557341769708</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed group id to conform maven central">
+      <created>1557344557109</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557344557109</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="JooqUtilTest - 2019.05.08 at 20h 34m 51s.xml">
-      <configuration name="JooqUtilTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="JooqUtilTest_createOrderBy - 2019.05.08 at 20h 38m 14s.xml">
-      <configuration name="JooqUtilTest.createOrderBy" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JooqUtilTest_createOrderBy - 2019.05.08 at 20h 38m 21s.xml">
       <configuration name="JooqUtilTest.createOrderBy" configurationId="JUnit" />
     </history-entry>
@@ -359,15 +371,27 @@
     <history-entry file="JooqUtilTest_createOrderBy - 2019.05.08 at 20h 43m 51s.xml">
       <configuration name="JooqUtilTest.createOrderBy" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="JooqUtilTest - 2019.05.09 at 08h 33m 24s.xml">
+      <configuration name="JooqUtilTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JooqUtilTest - 2019.05.09 at 08h 34m 08s.xml">
+      <configuration name="JooqUtilTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JooqUtilTest - 2019.05.09 at 08h 36m 02s.xml">
+      <configuration name="JooqUtilTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JooqUtilTest - 2019.05.09 at 08h 36m 21s.xml">
+      <configuration name="JooqUtilTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3278000" />
+    <option name="totallyTimeSpent" value="5163000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1721" height="935" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2528597" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -384,13 +408,13 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32948717" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.10535822" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.10501066" />
       <window_info anchor="right" id="PlantUML" order="4" />
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
@@ -408,7 +432,8 @@
     <MESSAGE value="add gitflow plugin" />
     <MESSAGE value="added oss-parent" />
     <MESSAGE value="added oss information" />
-    <option name="LAST_COMMIT_MESSAGE" value="added oss information" />
+    <MESSAGE value="changed group id to conform maven central" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed group id to conform maven central" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">
@@ -454,20 +479,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/TestTableField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/employee/model/tables/records/EmployeeRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/TestTableField.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/employee/model/tables/records/EmployeeRecord.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/jooq/jooq/3.11.10/jooq-3.11.10.jar!/org/jooq/QueryPart.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -485,13 +498,6 @@
     <entry file="file://$MAVEN_REPOSITORY$/com/amashchenko/maven/plugin/gitflow-maven-plugin/1.11.0/gitflow-maven-plugin-1.11.0.pom">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/JooqUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -504,15 +510,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="437">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/27.0.1-jre/guava-27.0.1-jre-sources.jar!/com/google/common/base/CaseFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1558">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/io/seventytwo/vaadinjooq/JooqUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/seventytwo/vaadinjooq/JooqUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+        <state relative-caret-position="211">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
