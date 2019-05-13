@@ -1,4 +1,4 @@
-package io.seventytwo.vaadinjooq;
+package io.seventytwo.vaadinjooq.util;
 
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.data.provider.SortDirection;

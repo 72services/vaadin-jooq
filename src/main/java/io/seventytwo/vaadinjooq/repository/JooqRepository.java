@@ -1,6 +1,7 @@
-package io.seventytwo.vaadinjooq;
+package io.seventytwo.vaadinjooq.repository;
 
 import org.jooq.*;
+import org.jooq.impl.DSL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,38 +21,36 @@ public class JooqRepository {
         this.dsl = dsl;
     }
 
-    public <T> T findOne(Table table, Condition condition) {
+    public <T extends Record> T findOne(Table<T> table, Condition condition) {
         return (T) dsl
                 .selectFrom(table)
                 .where(condition)
                 .fetchOne();
     }
 
-    public <T> List<T> findByExample(Table table, Condition condition, Map<Field, Boolean> orderBy, int offset, int limit, Class<T> resultType) {
-        SelectConditionStep<Record> where;
+    public <T extends Record> List<T> findByExample(Table<T> table, Condition condition, Map<Field<?>, Boolean> orderBy, int offset, int limit) {
+        SelectConditionStep<T> where;
         if (condition == null) {
-            where = dsl.select()
-                    .from(table)
-                    .where();
+            where = dsl.selectFrom(table)
+                    .where(DSL.noCondition());
         } else {
-            where = dsl.select()
-                    .from(table)
+            where = dsl.selectFrom(table)
                     .where(condition);
         }
         if (orderBy != null && !orderBy.isEmpty()) {
             return createOrderBy(table, where, orderBy)
                     .offset(offset)
                     .limit(limit)
-                    .fetchInto(resultType);
+                    .fetch();
         } else {
             return where
                     .offset(offset)
                     .limit(limit)
-                    .fetchInto(resultType);
+                    .fetch();
         }
     }
 
-    public List findByExample(Table table, Condition condition, Map<Field, Boolean> orderBy, int offset, int limit, Field... fields) {
+    public List<Record> findByExample(Table table, Condition condition, Map<Field<?>, Boolean> orderBy, int offset, int limit, Field<?>... fields) {
         SelectConditionStep<Record> where;
         if (condition == null) {
             where = dsl.select(fields)
@@ -75,7 +74,7 @@ public class JooqRepository {
         }
     }
 
-    public int count(Table table, Condition condition) {
+    public <T extends Record> int count(Table<T> table, Condition condition) {
         if (condition == null) {
             return dsl.fetchCount(dsl.selectFrom(table));
         } else {
@@ -83,12 +82,12 @@ public class JooqRepository {
         }
     }
 
-    public <T> T findByRecordId(Table table, Record record) {
+    public <T extends Record> T findByRecordId(Table<T> table, Record record) {
         Map<Field, Object> keys = getPrimaryKeyValues(table, record);
         return findById(table, keys);
     }
 
-    public <T> T findById(Table table, Object key) {
+    public <T extends Record> T findById(Table<T> table, Object key) {
         UniqueKey primaryKey = table.getPrimaryKey();
         if (primaryKey == null) {
             throw new IllegalArgumentException(
@@ -101,12 +100,12 @@ public class JooqRepository {
                                 table.getName(), primaryKey.getFields().size(), 1));
             } else {
                 TableField tableField = (TableField) primaryKey.getFields().get(0);
-                return (T) dsl.selectFrom(table).where(tableField.eq(key)).fetchOne();
+                return dsl.selectFrom(table).where(tableField.eq(key)).fetchOne();
             }
         }
     }
 
-    public <T> T findById(Table table, Map<Field, Object> keys) {
+    public <T extends Record> T findById(Table<T> table, Map<Field<?>, Object> keys) {
         UniqueKey primaryKey = table.getPrimaryKey();
         if (primaryKey == null) {
             throw new IllegalArgumentException(
@@ -118,13 +117,13 @@ public class JooqRepository {
                         format("Tabelle {0} hat {1} Primärschlüsselspalte(en). Es wurden aber {2} Wert(e) übergeben!",
                                 table.getName(), primaryKey.getFields().size(), keys.size()));
             } else {
-                SelectConditionStep where = dsl.selectFrom(table).where();
+                SelectConditionStep<T> where = dsl.selectFrom(table).where();
                 for (Object field : primaryKey.getFields()) {
                     TableField tableField = (TableField) field;
                     Object key = keys.get(tableField);
                     where = where.and(tableField.eq(key));
                 }
-                return (T) where.fetchOne();
+                return where.fetchOne();
             }
         }
     }
@@ -153,8 +152,8 @@ public class JooqRepository {
         return dsl;
     }
 
-    private SelectSeekStepN createOrderBy(Table table, SelectConditionStep<Record> where, Map<Field, Boolean> orderColumns) {
-        List orderFields = new ArrayList<>();
+    private <T extends Record> SelectSeekStepN<T> createOrderBy(Table<T> table, SelectConditionStep<T> where, Map<Field<?>, Boolean> orderColumns) {
+        List<OrderField<?>> orderFields = new ArrayList<>();
         orderColumns.forEach((key, value) -> {
             List<String> qualifiers = new ArrayList<>();
             qualifiers.add(table.getSchema().getName());
@@ -164,15 +163,15 @@ public class JooqRepository {
             Name column = name(qualifiers);
             Field<Object> field = field(column);
 
-            orderFields.add(value ? field : field.desc());
+            orderFields.add(value ? field.asc() : field.desc());
         });
         return where.orderBy(orderFields);
     }
 
-    private Map<Field, Object> getPrimaryKeyValues(Table table, Record record) {
+    private <T extends Record> Map<Field, Object> getPrimaryKeyValues(Table<T> table, Record record) {
         Map<Field, Object> keys = new HashMap<>();
         UniqueKey<?> primaryKey = table.getPrimaryKey();
-        for (Field field : primaryKey.getFields()) {
+        for (Field<?> field : primaryKey.getFields()) {
             keys.put(field, record.get(field));
         }
         return keys;

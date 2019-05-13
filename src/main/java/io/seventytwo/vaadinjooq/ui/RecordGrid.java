@@ -1,8 +1,10 @@
-package io.seventytwo.vaadinjooq;
+package io.seventytwo.vaadinjooq.ui;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.provider.SortOrder;
 import com.vaadin.flow.data.provider.*;
+import io.seventytwo.vaadinjooq.repository.JooqRepository;
+import io.seventytwo.vaadinjooq.util.JooqUtil;
 import org.jooq.*;
 
 import java.util.Arrays;
@@ -34,6 +36,10 @@ public class RecordGrid<R extends Record> extends Grid<R> {
         filterDataProvider.refreshAll();
     }
 
+    public void refresh() {
+        filterDataProvider.refreshAll();
+    }
+
     public static class Builder<R extends Record> {
 
         private final JooqRepository repository;
@@ -41,7 +47,7 @@ public class RecordGrid<R extends Record> extends Grid<R> {
         private Table<R> table;
         private TableField<?, ?>[] columns;
         private Condition condition;
-        private Map<Field, Boolean> sort;
+        private Map<Field<?>, Boolean> sort;
 
         public Builder(Table<R> table, DSLContext dslContext) {
             this.table = table;
@@ -60,12 +66,11 @@ public class RecordGrid<R extends Record> extends Grid<R> {
             return this;
         }
 
-        public Builder<R> withSort(Map<Field, Boolean> sort) {
+        public Builder<R> withSort(Map<Field<?>, Boolean> sort) {
             this.sort = sort;
 
             return this;
         }
-
 
         public RecordGrid<R> build() {
             grid = new RecordGrid<>((Class<R>) table.getRecordType());
@@ -117,8 +122,8 @@ public class RecordGrid<R extends Record> extends Grid<R> {
             return resultFields;
         }
 
-        private Map<Field, Boolean> createOrderBy(com.vaadin.flow.data.provider.Query<R, Condition> query) {
-            Map<Field, Boolean> orderBy = new HashMap<>();
+        private Map<Field<?>, Boolean> createOrderBy(com.vaadin.flow.data.provider.Query<R, Condition> query) {
+            Map<Field<?>, Boolean> orderBy = new HashMap<>();
             for (SortOrder<String> sortOrder : query.getSortOrders()) {
                 orderBy.put(table.field(sortOrder.getSorted()), sortOrder.getDirection().equals(SortDirection.ASCENDING));
             }

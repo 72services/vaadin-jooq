@@ -2,6 +2,7 @@ package io.seventytwo.vaadinjooq;
 
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.data.provider.SortDirection;
+import io.seventytwo.vaadinjooq.util.JooqUtil;
 import org.jooq.Field;
 import org.jooq.OrderField;
 import org.junit.Test;
