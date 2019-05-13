@@ -87,10 +87,7 @@ public class RecordGrid<R extends Record> extends Grid<R> {
         private CallbackDataProvider<R, Condition> createDataProvider() {
             return DataProvider.fromFilteringCallbacks(
                     query -> {
-                        List<Field<?>> resultFields = createResultFields();
-
-                        List rows = repository.findByExample(table, createFilter(query), createOrderBy(query), query.getOffset(), query.getLimit(),
-                                resultFields.toArray(new Field<?>[0]));
+                        List<R> rows = repository.findAll(table, createFilter(query), createOrderBy(query), query.getOffset(), query.getLimit());
                         if (!rows.isEmpty() && grid.getSelectedItems().isEmpty()) {
                             grid.select((R) rows.get(0));
                         }
@@ -112,14 +109,6 @@ public class RecordGrid<R extends Record> extends Grid<R> {
                 filter = condition;
             }
             return filter;
-        }
-
-        private List<Field<?>> createResultFields() {
-            List<Field<?>> resultFields = Arrays.asList(columns);
-            if (table.getPrimaryKey() != null) {
-                resultFields.addAll(table.getPrimaryKey().getFields());
-            }
-            return resultFields;
         }
 
         private Map<Field<?>, Boolean> createOrderBy(com.vaadin.flow.data.provider.Query<R, Condition> query) {

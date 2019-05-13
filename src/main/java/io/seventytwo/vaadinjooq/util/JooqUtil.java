@@ -40,19 +40,17 @@ public class JooqUtil {
     }
 
     public static OrderField[] createOrderBy(Table table, List<QuerySortOrder> sortOrders) {
-        List<OrderField<?>> list = sortOrders.stream().map(sortOrder -> {
+        return sortOrders.stream().map(sortOrder -> {
             Field<?> field = table.field(getFieldName(sortOrder.getSorted()));
             return sortOrder.getDirection() == SortDirection.ASCENDING ? field.asc() : field.desc();
-        }).collect(Collectors.toList());
-
-        return list.toArray(new OrderField[list.size()]);
+        }).toArray(OrderField[]::new);
     }
 
     private static String getFieldName(String propertyName) {
         StringBuilder sb = new StringBuilder();
         for (char c : propertyName.toCharArray()) {
             if (Character.isUpperCase(c)) {
-                sb.append("_" + c);
+                sb.append("_").append(c);
             } else {
                 sb.append(c);
             }
