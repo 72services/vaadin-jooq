@@ -11,14 +11,33 @@ import java.util.Map;
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.name;
 
+/**
+ * Convenience methods using {@link DSLContext}
+ */
 public class JooqRepository {
 
     private final DSLContext dslContext;
 
+    /**
+     * Requires {@link DSLContext}
+     *
+     * @param dslContext
+     */
     public JooqRepository(DSLContext dslContext) {
         this.dslContext = dslContext;
     }
 
+    /**
+     * Convenience findAll
+     *
+     * @param table     The table to select from
+     * @param condition A condition for the where clause
+     * @param orderBy   A map fields for sorting
+     * @param offset    The start offset
+     * @param limit     The number of records to return
+     * @param <T>       The Record type
+     * @return List of Records
+     */
     public <T extends Record> List<T> findAll(Table<T> table, Condition condition, Map<Field<?>, Boolean> orderBy, int offset, int limit) {
         SelectConditionStep<T> where;
         if (condition == null) {
@@ -41,6 +60,14 @@ public class JooqRepository {
         }
     }
 
+    /**
+     * Count method similar to @see findAll
+     *
+     * @param table     The table to count the records
+     * @param condition A condition for the where clause
+     * @param <T>       The Record type
+     * @return Number of records
+     */
     public <T extends Record> int count(Table<T> table, Condition condition) {
         if (condition == null) {
             return dslContext.fetchCount(dslContext.selectFrom(table));
@@ -49,6 +76,15 @@ public class JooqRepository {
         }
     }
 
+    /**
+     * Base on map of Fields this method adds an order by
+     *
+     * @param table        The table
+     * @param where        The where condition
+     * @param orderColumns The map that contains the order fields
+     * @param <T>          Record type
+     * @return The select step with the order by clause
+     */
     private <T extends Record> SelectSeekStepN<T> createOrderBy(Table<T> table, SelectConditionStep<T> where, Map<Field<?>, Boolean> orderColumns) {
         List<OrderField<?>> orderFields = new ArrayList<>();
         orderColumns.forEach((key, value) -> {
