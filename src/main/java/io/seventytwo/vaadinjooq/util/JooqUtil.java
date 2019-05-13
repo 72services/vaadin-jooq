@@ -8,11 +8,21 @@ import org.jooq.Table;
 
 import java.util.List;
 
+/**
+ * A utility class with some helper methods that uses the jOOQ generate meta model
+ */
 public class JooqUtil {
 
     private JooqUtil() {
     }
 
+    /**
+     * Returns the property name base on a jOOQ {@link Field}
+     * Converts upper with _ delimiter to camel case
+     *
+     * @param field The field
+     * @return The property name
+     */
     public static String getPropertyName(Field<?> field) {
         String fieldName = field.getName();
         char[] chars = fieldName.toLowerCase().toCharArray();
@@ -33,11 +43,25 @@ public class JooqUtil {
         return sb.toString();
     }
 
+    /**
+     * Returns the {@link Field} base from a table based on a property name
+     *
+     * @param table        The table
+     * @param propertyName The property name
+     * @return The field
+     */
     public static Field<?> getField(Table table, String propertyName) {
         String fieldName = getFieldName(propertyName);
         return (Field<?>) table.field(fieldName);
     }
 
+    /**
+     * Converts a Vaadin {@link QuerySortOrder} to an array of jOOQ {@link OrderField}
+     *
+     * @param table      The table
+     * @param sortOrders The sort orders
+     * @return An array of order fields
+     */
     public static OrderField[] createOrderBy(Table table, List<QuerySortOrder> sortOrders) {
         return sortOrders.stream().map(sortOrder -> {
             Field<?> field = table.field(getFieldName(sortOrder.getSorted()));
@@ -45,6 +69,12 @@ public class JooqUtil {
         }).toArray(OrderField[]::new);
     }
 
+    /**
+     * Converts camel case to upper case with _ as delimiter
+     *
+     * @param propertyName
+     * @return
+     */
     private static String getFieldName(String propertyName) {
         StringBuilder sb = new StringBuilder();
         for (char c : propertyName.toCharArray()) {
