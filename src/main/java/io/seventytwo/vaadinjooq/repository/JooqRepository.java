@@ -13,19 +13,19 @@ import static org.jooq.impl.DSL.name;
 
 public class JooqRepository {
 
-    private DSLContext dsl;
+    private final DSLContext dslContext;
 
-    public JooqRepository(DSLContext dsl) {
-        this.dsl = dsl;
+    public JooqRepository(DSLContext dslContext) {
+        this.dslContext = dslContext;
     }
 
     public <T extends Record> List<T> findAll(Table<T> table, Condition condition, Map<Field<?>, Boolean> orderBy, int offset, int limit) {
         SelectConditionStep<T> where;
         if (condition == null) {
-            where = dsl.selectFrom(table)
+            where = dslContext.selectFrom(table)
                     .where(DSL.noCondition());
         } else {
-            where = dsl.selectFrom(table)
+            where = dslContext.selectFrom(table)
                     .where(condition);
         }
         if (orderBy != null && !orderBy.isEmpty()) {
@@ -43,9 +43,9 @@ public class JooqRepository {
 
     public <T extends Record> int count(Table<T> table, Condition condition) {
         if (condition == null) {
-            return dsl.fetchCount(dsl.selectFrom(table));
+            return dslContext.fetchCount(dslContext.selectFrom(table));
         } else {
-            return dsl.fetchCount(dsl.selectFrom(table).where(condition));
+            return dslContext.fetchCount(dslContext.selectFrom(table).where(condition));
         }
     }
 
