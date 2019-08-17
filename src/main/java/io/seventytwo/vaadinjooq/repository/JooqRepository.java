@@ -21,7 +21,7 @@ public class JooqRepository {
     /**
      * Requires {@link DSLContext}
      *
-     * @param dslContext
+     * @param dslContext The DSLContext to use
      */
     public JooqRepository(DSLContext dslContext) {
         this.dslContext = dslContext;

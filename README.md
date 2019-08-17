@@ -24,11 +24,10 @@ It contains a Builder that can be used to create the Grid.
 #### Example
  
 ```java
-RecordGrid.Builder<VEmployeeRecord> recordGridBuilder = new RecordGrid.Builder<>(V_EMPLOYEE, dslContext);
-recordGridBuilder.withColumns(V_EMPLOYEE.EMPLOYEE_ID, V_EMPLOYEE.EMPLOYEE_NAME, V_EMPLOYEE.DEPARTMENT_NAME);
-recordGridBuilder.withSort(Map.of(V_EMPLOYEE.EMPLOYEE_NAME, true));
-
-RecordGrid<VEmployeeRecord> grid = recordGridBuilder.build();
+RecordGrid<VEmployeeRecord> grid = new RecordGrid.Builder<>(V_EMPLOYEE, dslContext)
+                                         .withColumns(V_EMPLOYEE.EMPLOYEE_ID, V_EMPLOYEE.EMPLOYEE_NAME, V_EMPLOYEE.DEPARTMENT_NAME)
+                                         .withSort(Map.of(V_EMPLOYEE.EMPLOYEE_NAME, true))
+                                         .build();
 ```
 
 For a fully integrated example have a look at the [showcase project](https://github.com/simasch/vaadin-jooq-employee).
