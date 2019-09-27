@@ -1,5 +1,6 @@
 package io.seventytwo.vaadinjooq.repository;
 
+import com.vaadin.flow.data.provider.SortDirection;
 import org.jooq.*;
 import org.jooq.impl.DSL;
 
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.name;
 
@@ -38,7 +40,7 @@ public class JooqRepository {
      * @param <T>       The Record type
      * @return List of Records
      */
-    public <T extends Record> List<T> findAll(Table<T> table, Condition condition, Map<Field<?>, Boolean> orderBy, int offset, int limit) {
+    public <T extends Record> List<T> findAll(Table<T> table, Condition condition, Map<Field<?>, SortDirection> orderBy, int offset, int limit) {
         SelectConditionStep<T> where;
         if (condition == null) {
             where = dslContext.selectFrom(table)
@@ -85,7 +87,7 @@ public class JooqRepository {
      * @param <T>          Record type
      * @return The select step with the order by clause
      */
-    private <T extends Record> SelectSeekStepN<T> createOrderBy(Table<T> table, SelectConditionStep<T> where, Map<Field<?>, Boolean> orderColumns) {
+    private <T extends Record> SelectSeekStepN<T> createOrderBy(Table<T> table, SelectConditionStep<T> where, Map<Field<?>, SortDirection> orderColumns) {
         List<OrderField<?>> orderFields = new ArrayList<>();
         orderColumns.forEach((key, value) -> {
             List<String> qualifiers = new ArrayList<>();
@@ -96,7 +98,7 @@ public class JooqRepository {
             Name column = name(qualifiers);
             Field<Object> field = field(column);
 
-            orderFields.add(value ? field.asc() : field.desc());
+            orderFields.add(value == ASCENDING ? field.asc() : field.desc());
         });
         return where.orderBy(orderFields);
     }
