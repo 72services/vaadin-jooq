@@ -47,7 +47,7 @@ public class RecordGrid<R extends Record> extends Grid<R> {
         private Table<R> table;
         private TableField<?, ?>[] columns;
         private Condition condition;
-        private Map<Field<?>, Boolean> sort;
+        private Map<Field<?>, SortDirection> sort;
 
         public Builder(Table<R> table, DSLContext dslContext) {
             this.table = table;
@@ -66,7 +66,7 @@ public class RecordGrid<R extends Record> extends Grid<R> {
             return this;
         }
 
-        public Builder<R> withSort(Map<Field<?>, Boolean> sort) {
+        public Builder<R> withSort(Map<Field<?>, SortDirection> sort) {
             this.sort = sort;
 
             return this;
@@ -111,10 +111,10 @@ public class RecordGrid<R extends Record> extends Grid<R> {
             return filter;
         }
 
-        private Map<Field<?>, Boolean> createOrderBy(com.vaadin.flow.data.provider.Query<R, Condition> query) {
-            Map<Field<?>, Boolean> orderBy = new HashMap<>();
+        private Map<Field<?>, SortDirection> createOrderBy(com.vaadin.flow.data.provider.Query<R, Condition> query) {
+            Map<Field<?>, SortDirection> orderBy = new HashMap<>();
             for (SortOrder<String> sortOrder : query.getSortOrders()) {
-                orderBy.put(table.field(sortOrder.getSorted()), sortOrder.getDirection().equals(SortDirection.ASCENDING));
+                orderBy.put(table.field(sortOrder.getSorted()), sortOrder.getDirection());
             }
             if (orderBy.isEmpty()) {
                 orderBy = sort;
