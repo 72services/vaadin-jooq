@@ -2,6 +2,7 @@ package io.seventytwo.vaadinjooq.repository;
 
 import com.vaadin.flow.data.provider.SortDirection;
 import org.jooq.*;
+import org.jooq.Record;
 import org.jooq.impl.DSL;
 
 import java.util.ArrayList;

@@ -6,6 +6,7 @@ import com.vaadin.flow.data.provider.*;
 import io.seventytwo.vaadinjooq.repository.JooqRepository;
 import io.seventytwo.vaadinjooq.util.JooqUtil;
 import org.jooq.*;
+import org.jooq.Record;
 
 import java.util.Arrays;
 import java.util.HashMap;
