@@ -45,7 +45,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
-            <version>14.1.28</version>
+            <version>14.2.1</version>
             <scope>provided</scope>
         </dependency>
 
