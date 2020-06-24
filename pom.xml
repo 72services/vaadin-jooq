@@ -6,7 +6,7 @@
 
     <groupId>io.seventytwo.oss</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1-SNAPSHOT</version>
 
     <name>Vaadin jOOQ Integration</name>
     <description>Integrates Vaadin with jOOQ</description>
