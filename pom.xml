@@ -39,13 +39,13 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.13.2</version>
+            <version>3.14.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
-            <version>14.2.1</version>
+            <version>14.4.2</version>
             <scope>provided</scope>
         </dependency>
 

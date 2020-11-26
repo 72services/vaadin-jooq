@@ -10,6 +10,8 @@ import org.jooq.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.text.MessageFormat.format;
+
 public class VaadinJooqUtil {
 
     private VaadinJooqUtil() {
@@ -26,6 +28,9 @@ public class VaadinJooqUtil {
         List<OrderField<?>> orderFields = new ArrayList<>();
         for (QuerySortOrder sortOrder : query.getSortOrders()) {
             Field<?> field = table.field(sortOrder.getSorted());
+            if (field == null) {
+                throw new IllegalArgumentException(format("Field {0} is not a field of {1}", table.getName(), sortOrder.getSorted()));
+            }
             orderFields.add(sortOrder.getDirection().equals(SortDirection.DESCENDING) ? field.desc() : field);
         }
         return orderFields;
