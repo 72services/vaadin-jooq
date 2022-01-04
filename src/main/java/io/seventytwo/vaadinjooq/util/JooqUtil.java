@@ -50,7 +50,7 @@ public class JooqUtil {
      * @param propertyName The property name
      * @return The field
      */
-    public static Field<?> getField(Table table, String propertyName) {
+    public static Field<?> getField(Table<?> table, String propertyName) {
         String fieldName = getFieldName(propertyName);
         return (Field<?>) table.field(fieldName);
     }
@@ -62,7 +62,7 @@ public class JooqUtil {
      * @param sortOrders The sort orders
      * @return An array of order fields
      */
-    public static OrderField[] createOrderBy(Table table, List<QuerySortOrder> sortOrders) {
+    public static OrderField<?>[] createOrderBy(Table<?> table, List<QuerySortOrder> sortOrders) {
         return sortOrders.stream().map(sortOrder -> {
             Field<?> field = table.field(getFieldName(sortOrder.getSorted()));
             return sortOrder.getDirection() == SortDirection.ASCENDING ? field.asc() : field.desc();
@@ -72,8 +72,8 @@ public class JooqUtil {
     /**
      * Converts camel case to upper case with _ as delimiter
      *
-     * @param propertyName
-     * @return
+     * @param propertyName The name of the property
+     * @return the name of the field
      */
     private static String getFieldName(String propertyName) {
         StringBuilder sb = new StringBuilder();

@@ -23,8 +23,7 @@ public class RecordGrid<R extends Record> extends Grid<R> {
     }
 
     private void setColumns(TableField<?, ?>... columns) {
-        List<String> propertyNames = Arrays.stream(columns).map(field -> JooqUtil.getPropertyName(field)).collect(Collectors.toList());
-        super.setColumns(propertyNames.toArray(new String[propertyNames.size()]));
+        super.setColumns(Arrays.stream(columns).map(JooqUtil::getPropertyName).toArray(String[]::new));
     }
 
     public void setFilterDataProvider(ConfigurableFilterDataProvider<R, Void, Condition> filterDataProvider) {

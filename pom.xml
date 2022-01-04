@@ -21,7 +21,7 @@
     <developers>
         <developer>
             <id>simasch</id>
-            <name>Simon Martineli</name>
+            <name>Simon Martinelli</name>
             <organization>72 Services LLC</organization>
             <organizationUrl>https://72.services</organizationUrl>
             <email>simon@72.services</email>
@@ -39,20 +39,20 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.14.3</version>
+            <version>3.15.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
-            <version>14.4.2</version>
+            <version>14.8.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
