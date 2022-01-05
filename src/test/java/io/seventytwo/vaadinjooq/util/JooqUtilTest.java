@@ -2,16 +2,15 @@ package io.seventytwo.vaadinjooq.util;
 
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.data.provider.SortDirection;
-import io.seventytwo.vaadinjooq.util.JooqUtil;
 import org.jooq.Field;
 import org.jooq.OrderField;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 import static io.seventytwo.db.tables.Customer.CUSTOMER;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JooqUtilTest {
 
