@@ -12,7 +12,7 @@ Add a dependency to the current version:
 <dependency>
     <groupId>io.seventytwo.oss</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
