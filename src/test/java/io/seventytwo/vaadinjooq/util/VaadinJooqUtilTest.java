@@ -4,13 +4,14 @@ import com.vaadin.flow.data.provider.Query;
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.data.provider.SortDirection;
 import org.jooq.OrderField;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static io.seventytwo.db.tables.Customer.CUSTOMER;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VaadinJooqUtilTest {
 
@@ -42,12 +43,14 @@ public class VaadinJooqUtilTest {
         assertEquals("\"CUSTOMER\".\"EMAIL\" desc", orderField.toString());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void unknownField() {
-        QuerySortOrder sortOrder = new QuerySortOrder("NAME", SortDirection.ASCENDING);
-        List<QuerySortOrder> sortOrders = new ArrayList<>();
-        sortOrders.add(sortOrder);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            QuerySortOrder sortOrder = new QuerySortOrder("NAME", SortDirection.ASCENDING);
+            List<QuerySortOrder> sortOrders = new ArrayList<>();
+            sortOrders.add(sortOrder);
 
-        VaadinJooqUtil.orderFields(CUSTOMER, new Query(0, 50, sortOrders, null, null));
+            VaadinJooqUtil.orderFields(CUSTOMER, new Query(0, 50, sortOrders, null, null));
+        });
     }
 }
