@@ -8,6 +8,7 @@ import org.jooq.OrderField;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static io.seventytwo.db.tables.Customer.CUSTOMER;
 import static org.junit.Assert.assertEquals;
@@ -31,7 +32,7 @@ public class JooqUtilTest {
     @Test
     public void createOrderBy() {
         QuerySortOrder sortOrder = new QuerySortOrder("firstName", SortDirection.ASCENDING);
-        OrderField[] orderBy = JooqUtil.createOrderBy(CUSTOMER, Arrays.asList(sortOrder));
+        OrderField<?>[] orderBy = JooqUtil.createOrderBy(CUSTOMER, Collections.singletonList(sortOrder));
 
         Arrays.stream(orderBy).forEach(orderField -> {
             assertEquals("\"CUSTOMER\".\"FIRST_NAME\" asc", orderField.toString());

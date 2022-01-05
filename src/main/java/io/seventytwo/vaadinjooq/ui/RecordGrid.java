@@ -1,18 +1,24 @@
 package io.seventytwo.vaadinjooq.ui;
 
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.data.provider.CallbackDataProvider;
+import com.vaadin.flow.data.provider.ConfigurableFilterDataProvider;
+import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.provider.SortDirection;
 import com.vaadin.flow.data.provider.SortOrder;
-import com.vaadin.flow.data.provider.*;
 import io.seventytwo.vaadinjooq.repository.JooqRepository;
 import io.seventytwo.vaadinjooq.util.JooqUtil;
-import org.jooq.*;
+import org.jooq.Condition;
+import org.jooq.DSLContext;
+import org.jooq.Field;
 import org.jooq.Record;
+import org.jooq.Table;
+import org.jooq.TableField;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class RecordGrid<R extends Record> extends Grid<R> {
 
@@ -43,8 +49,8 @@ public class RecordGrid<R extends Record> extends Grid<R> {
     public static class Builder<R extends Record> {
 
         private final JooqRepository repository;
+        private final Table<R> table;
         private RecordGrid<R> grid;
-        private Table<R> table;
         private TableField<?, ?>[] columns;
         private Condition condition;
         private Map<Field<?>, SortDirection> sort;

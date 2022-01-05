@@ -12,7 +12,7 @@ Add a dependency to the current version:
 <dependency>
     <groupId>io.seventytwo.oss</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -35,8 +35,7 @@ For a fully integrated example have a look at the [showcase project](https://git
 
 ### VaadinJooqUtil
 
-The VaadinJooqUtil class provides a convenience method to convert sort orders from a Vaadin DataProvider to OrderFields 
-that can be used in a orderBy clause with jOOQ.
+The VaadinJooqUtil class provides a convenience method to convert sort orders from a Vaadin DataProvider to OrderFields that can be used in a orderBy clause with jOOQ.
 
 #### Example
 
