@@ -9,7 +9,7 @@ import org.jooq.Table;
 import java.util.List;
 
 /**
- * A utility class with some helper methods that uses the jOOQ generate metamodel
+ * A utility class with helper methods that uses the jOOQ generate metamodel
  */
 public class JooqUtil {
 
@@ -33,9 +33,43 @@ public class JooqUtil {
                 wasUnderScore = true;
             } else {
                 if (wasUnderScore) {
-                    sb.append(Character.valueOf(c).toString().toUpperCase());
+                    sb.append(Character.toString(c).toUpperCase());
                 } else {
                     sb.append(c);
+                }
+                wasUnderScore = false;
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Returns the header text based on a jOOQ {@link Field}
+     * Converts upper with _ delimiter to words
+     *
+     * @param field The field
+     * @return The header text
+     */
+    public static String getHeaderText(Field<?> field) {
+        String fieldName = field.getName();
+        char[] chars = fieldName.toLowerCase().toCharArray();
+        boolean wasUnderScore = false;
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        for (char c : chars) {
+            if (c == '_') {
+                wasUnderScore = true;
+                sb.append(" ");
+            } else {
+                if (wasUnderScore) {
+                    sb.append(Character.toString(c).toUpperCase());
+                } else {
+                    if (first) {
+                        sb.append(Character.toString(c).toUpperCase());
+                        first = false;
+                    } else {
+                        sb.append(c);
+                    }
                 }
                 wasUnderScore = false;
             }
@@ -52,7 +86,7 @@ public class JooqUtil {
      */
     public static Field<?> getField(Table<?> table, String propertyName) {
         String fieldName = getFieldName(propertyName);
-        return (Field<?>) table.field(fieldName);
+        return table.field(fieldName);
     }
 
     /**

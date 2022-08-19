@@ -73,14 +73,14 @@ public class JooqRepository {
      */
     public <T extends Record> int count(Table<T> table, Condition condition) {
         if (condition == null) {
-            return dslContext.fetchCount(dslContext.selectFrom(table));
+            return dslContext.selectCount().from(table).fetchOneInto(Integer.class);
         } else {
-            return dslContext.fetchCount(dslContext.selectFrom(table).where(condition));
+            return dslContext.selectCount().from(table).where(condition).fetchOneInto(Integer.class);
         }
     }
 
     /**
-     * Base on map of Fields this method adds an order by
+     * Based on a map of Fields this method adds an order by
      *
      * @param table        The table
      * @param where        The where condition

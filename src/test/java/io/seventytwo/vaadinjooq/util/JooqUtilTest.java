@@ -12,30 +12,28 @@ import java.util.Collections;
 import static io.seventytwo.db.tables.Customer.CUSTOMER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JooqUtilTest {
+class JooqUtilTest {
 
     @Test
-    public void getPropertyName() {
+    void getPropertyName() {
         String propertyName = JooqUtil.getPropertyName(CUSTOMER.FIRST_NAME);
 
         assertEquals("firstName", propertyName);
     }
 
     @Test
-    public void getField() {
+    void getField() {
         Field<?> firstName = JooqUtil.getField(CUSTOMER, "firstName");
 
         assertEquals("FIRST_NAME", firstName.getName());
     }
 
     @Test
-    public void createOrderBy() {
+    void createOrderBy() {
         QuerySortOrder sortOrder = new QuerySortOrder("firstName", SortDirection.ASCENDING);
         OrderField<?>[] orderBy = JooqUtil.createOrderBy(CUSTOMER, Collections.singletonList(sortOrder));
 
-        Arrays.stream(orderBy).forEach(orderField -> {
-            assertEquals("\"CUSTOMER\".\"FIRST_NAME\" asc", orderField.toString());
-        });
+        Arrays.stream(orderBy).forEach(orderField -> assertEquals("\"CUSTOMER\".\"FIRST_NAME\" asc", orderField.toString()));
     }
 
 }
