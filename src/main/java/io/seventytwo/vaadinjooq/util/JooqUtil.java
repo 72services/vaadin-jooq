@@ -52,7 +52,7 @@ public class JooqUtil {
      */
     public static Field<?> getField(Table<?> table, String propertyName) {
         String fieldName = getFieldName(propertyName);
-        return (Field<?>) table.field(fieldName);
+        return table.field(fieldName);
     }
 
     /**

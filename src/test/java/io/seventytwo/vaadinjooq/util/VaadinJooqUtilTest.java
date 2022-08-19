@@ -13,10 +13,10 @@ import java.util.List;
 import static io.seventytwo.db.tables.Customer.CUSTOMER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class VaadinJooqUtilTest {
+class VaadinJooqUtilTest {
 
     @Test
-    public void orderByEmailAsc() {
+    void orderByEmailAsc() {
         QuerySortOrder sortOrder = new QuerySortOrder("EMAIL", SortDirection.ASCENDING);
         List<QuerySortOrder> sortOrders = new ArrayList<>();
         sortOrders.add(sortOrder);
@@ -30,7 +30,7 @@ public class VaadinJooqUtilTest {
     }
 
     @Test
-    public void orderByEmailDesc() {
+    void orderByEmailDesc() {
         QuerySortOrder sortOrder = new QuerySortOrder("EMAIL", SortDirection.DESCENDING);
         List<QuerySortOrder> sortOrders = new ArrayList<>();
         sortOrders.add(sortOrder);
@@ -44,7 +44,7 @@ public class VaadinJooqUtilTest {
     }
 
     @Test
-    public void unknownField() {
+    void unknownField() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             QuerySortOrder sortOrder = new QuerySortOrder("NAME", SortDirection.ASCENDING);
             List<QuerySortOrder> sortOrders = new ArrayList<>();
