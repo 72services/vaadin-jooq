@@ -73,9 +73,9 @@ public class JooqRepository {
      */
     public <T extends Record> int count(Table<T> table, Condition condition) {
         if (condition == null) {
-            return dslContext.fetchCount(dslContext.selectFrom(table));
+            return dslContext.selectCount().from(table).fetchOneInto(Integer.class);
         } else {
-            return dslContext.fetchCount(dslContext.selectFrom(table).where(condition));
+            return dslContext.selectCount().from(table).where(condition).fetchOneInto(Integer.class);
         }
     }
 

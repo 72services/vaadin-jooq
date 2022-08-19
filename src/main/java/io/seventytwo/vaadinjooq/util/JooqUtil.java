@@ -33,9 +33,43 @@ public class JooqUtil {
                 wasUnderScore = true;
             } else {
                 if (wasUnderScore) {
-                    sb.append(Character.valueOf(c).toString().toUpperCase());
+                    sb.append(Character.toString(c).toUpperCase());
                 } else {
                     sb.append(c);
+                }
+                wasUnderScore = false;
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Returns the header text based on a jOOQ {@link Field}
+     * Converts upper with _ delimiter to words
+     *
+     * @param field The field
+     * @return The header text
+     */
+    public static String getHeaderText(Field<?> field) {
+        String fieldName = field.getName();
+        char[] chars = fieldName.toLowerCase().toCharArray();
+        boolean wasUnderScore = false;
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        for (char c : chars) {
+            if (c == '_') {
+                wasUnderScore = true;
+                sb.append(" ");
+            } else {
+                if (wasUnderScore) {
+                    sb.append(Character.toString(c).toUpperCase());
+                } else {
+                    if (first) {
+                        sb.append(Character.toString(c).toUpperCase());
+                        first = false;
+                    } else {
+                        sb.append(c);
+                    }
                 }
                 wasUnderScore = false;
             }
