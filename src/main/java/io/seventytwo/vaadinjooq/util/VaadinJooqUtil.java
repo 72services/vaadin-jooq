@@ -12,6 +12,9 @@ import java.util.List;
 
 import static java.text.MessageFormat.format;
 
+/**
+ * A utility class that helps to convert between Vaadin and jOOQ
+ */
 public class VaadinJooqUtil {
 
     private VaadinJooqUtil() {

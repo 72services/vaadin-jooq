@@ -80,7 +80,7 @@ public class JooqRepository {
     }
 
     /**
-     * Base on map of Fields this method adds an order by
+     * Based on a map of Fields this method adds an order by
      *
      * @param table        The table
      * @param where        The where condition

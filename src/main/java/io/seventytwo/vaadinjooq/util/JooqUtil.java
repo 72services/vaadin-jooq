@@ -9,7 +9,7 @@ import org.jooq.Table;
 import java.util.List;
 
 /**
- * A utility class with some helper methods that uses the jOOQ generate metamodel
+ * A utility class with helper methods that uses the jOOQ generate metamodel
  */
 public class JooqUtil {
 
