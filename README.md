@@ -4,7 +4,23 @@ vaadin-jooq is a small open source library to integrate [Vaadin](https://www.vaa
 
 ## How To
 
-### Dependency 
+### Dependency
+
+#### jOOQ 3.17.x
+
+If you are using jOOQ 3.17.x you must use 2.x.x because this version requires Java 17
+
+```xml
+<dependency>
+    <groupId>io.seventytwo.oss</groupId>
+    <artifactId>vaadin-jooq</artifactId>
+    <version>2.0.0</version>
+</dependency>
+```
+
+#### jOOQ 3.16.x
+
+If you are using jOOQ 3.16 you must use 1.x.x
 
 Add a dependency to the current version:
 
@@ -12,7 +28,7 @@ Add a dependency to the current version:
 <dependency>
     <groupId>io.seventytwo.oss</groupId>
     <artifactId>vaadin-jooq</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
