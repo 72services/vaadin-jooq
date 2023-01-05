@@ -1,3 +1,5 @@
 /target/
 /.idea/
 vaadin-jooq.iml
+.vscode
+.devcontainer
