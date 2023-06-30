@@ -46,8 +46,8 @@ public class VaadinJooqUtil {
     /**
      * Convert a Java Record to {@link OrderField}
      *
-     * @param recordType
-     * @param query The {@link Query}
+     * @param recordType Type of the record
+     * @param query      The {@link Query}
      * @return a {@link List} of {@link OrderField}
      */
     public static List<? extends OrderField<?>> createSortOrder(Class<?> recordType, Query<?, ?> query) {
@@ -59,11 +59,10 @@ public class VaadinJooqUtil {
 
     private static SortField<?> mapFieldsOrThrowException(Class<?> recordType, QuerySortOrder querySortOrder) {
         Arrays.stream(recordType.getRecordComponents())
-                .filter(recordComponent -> !querySortOrder.getSorted().toLowerCase().equals(recordComponent.getName().toLowerCase()))
+                .filter(recordComponent -> !querySortOrder.getSorted().equalsIgnoreCase(recordComponent.getName()))
                 .findAny()
-                .orElseThrow(() -> {
-                    throw new IllegalArgumentException(format("Field {0} is not a field of {1}", querySortOrder.getSorted(), recordType.getName()));
-                });
+                .orElseThrow(() -> new IllegalArgumentException(format("Field {0} is not a field of {1}",
+                        querySortOrder.getSorted(), recordType.getName())));
 
         return querySortOrder.getDirection() == SortDirection.ASCENDING ?
                 field(querySortOrder.getSorted()).asc() : field(querySortOrder.getSorted()).desc();
